@@ -1,7 +1,7 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -12,7 +12,7 @@ const Navbar = () => {
         </div>
         <div className='flex w-[80%] justify-end'>
   <ul className='list-none flex space-x-4 pr-10 items-center text-white text-xl gap-20'>
-    <li>Home</li>
+    <Link to='/' ><li>Home</li></Link>
     <li>About</li>
     <li>Contact</li>
     <li>Policies</li>
