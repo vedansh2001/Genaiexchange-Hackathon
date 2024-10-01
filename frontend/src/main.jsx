@@ -12,6 +12,7 @@ import "./index.css";
 import PolicyDetail from "./pages/PolicyDetail.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import EduactePolicyPage from "./pages/EduactePolicyPage.jsx";
+import UserPage from "./pages/UserPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path="" element={<Homepage />} />
       <Route path="policydetail/:id" element={<PolicyDetail />} />
       <Route path="educatepolicypage" element={<EduactePolicyPage />} />
+      <Route path="userpage" element={<UserPage />} />
     </Route>
   )
 );

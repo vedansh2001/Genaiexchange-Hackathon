@@ -17,7 +17,7 @@ const Navbar = () => {
     <li>Contact</li>
     <li>Policies</li>
     <li><FontAwesomeIcon icon={faMagnifyingGlass} /></li>
-    <li className='text-3xl  ' ><div className=' justify-center border rounded-full items-center flex w-14 h-14' ><FontAwesomeIcon icon={faUser} /></div></li>
+    <Link to='/userpage' ><li className='text-3xl  ' ><div className=' justify-center border rounded-full items-center flex w-14 h-14' ><FontAwesomeIcon icon={faUser} /></div></li></Link>
   </ul>
 </div>
 
