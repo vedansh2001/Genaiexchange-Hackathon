@@ -87,7 +87,7 @@ const Homepage = () => {
 
         <div className='bg-gradient-to-b from-gray-900 to-gray-950 pt-6'>
           <div className="w-[70%] ml-[15%] grid grid-cols-1 gap-x-10 gap-y-6 mb-16 ">
-            <Link to="/policydetail/1">
+            <Link to="/educatepolicy">
               <div className="h-[250px] text-3xl flex items-center justify-center rounded-lg bg-gradient-to-b from-gray-500 to-gray-700">
                 Policy 1
               </div>
