@@ -86,37 +86,23 @@ const Homepage = () => {
         </div>
 
         <div className='bg-gradient-to-b from-gray-900 to-gray-950 pt-6'>
-          <div className="w-[70%] ml-[15%] grid grid-cols-2 gap-x-10 gap-y-6 mb-16 ">
-            <Link to="/policydetail">
+          <div className="w-[70%] ml-[15%] grid grid-cols-1 gap-x-10 gap-y-6 mb-16 ">
+            <Link to="/policydetail/1">
               <div className="h-[250px] text-3xl flex items-center justify-center rounded-lg bg-gradient-to-b from-gray-500 to-gray-700">
                 Policy 1
               </div>
             </Link>
-            <Link to="/policydetail">
+            <Link to="/policydetail/1">
               <div className="h-[250px] text-3xl flex items-center justify-center rounded-lg bg-gradient-to-b from-pink-500 to-gray-700">
                 Policy 2
               </div>
             </Link>
-            <Link to="/policydetail">
+            <Link to="/policydetail/1">
               <div className="h-[250px] text-3xl flex items-center justify-center rounded-lg bg-gradient-to-b from-yellow-400 to-yellow-700">
                 Policy 3
               </div>
             </Link>
-            <Link to="/policydetail">
-              <div className="h-[250px] text-3xl flex items-center justify-center rounded-lg bg-gradient-to-b from-violet-500 to-violet-700">
-                Policy 4
-              </div>
-            </Link>
-            <Link to="/policydetail">
-              <div className="h-[250px] text-3xl flex items-center justify-center rounded-lg bg-gradient-to-b from-orange-500 to-orange-700">
-                Policy 5
-              </div>
-            </Link>
-            <Link to="/policydetail">
-              <div className="h-[250px] text-3xl flex items-center justify-center rounded-lg bg-gradient-to-b from-green-500 to-green-700">
-                Policy 6
-              </div>
-            </Link>
+            
           </div>
         </div>
     </div>
