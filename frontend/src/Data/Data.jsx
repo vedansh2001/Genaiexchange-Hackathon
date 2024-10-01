@@ -1,4 +1,4 @@
-export const QNA = [
+export const FAQs = [
     {
         id: 1,
         ques: `Life Insurance`,
@@ -205,7 +205,9 @@ website of the respective insurers.`
         id:20,
         ques: `What is the benefit payable on the maturity of
 the policy?`,
-        ans: `s it possible to invest additional contribution
-above the regular premium?`
+        ans: `The Sum Assured and/or value of the fund units is
+normally payable to the beneficiaries in the event
+of risk to the life assured during the term as per the
+policy conditions.`
     },
 ]
