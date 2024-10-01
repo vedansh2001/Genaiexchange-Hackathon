@@ -3,9 +3,11 @@ import Footer from "../components/Footer";
 import AiModel from "../components/AiModel";
 const EduactePolicyPage = () => {
   return (
-    <div>
+    <div className="text-white">
       <Navbar />
-      <div>Understand Policy</div>
+      <div >
+        <h1>Understand Policy</h1>
+      </div>
       <div>
         <ul>
           <li>
@@ -20,6 +22,5 @@ const EduactePolicyPage = () => {
       <Footer />
     </div>
   );
-  
 };
 export default EduactePolicyPage;
