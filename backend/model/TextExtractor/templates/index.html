@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document/Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .upload-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative; /* For absolute positioning of the spinner */
+            overflow: hidden; /* Prevents the spinner from overflowing the button */
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #loadingSpinner {
+            display: none; /* Hidden by default */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%); /* Center the spinner */
+            width: 20px; /* Spinner size */
+            height: 20px; /* Spinner size */
+            border: 3px solid #f3f3f3; /* Light color */
+            border-top: 3px solid #3498db; /* Spinner color */
+            border-radius: 50%;
+            animation: spin 1s linear infinite; /* Spin animation */
+            z-index: 1; /* Ensure the spinner appears above the button text */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #extractedText {
+            margin-top: 20px;
+            white-space: pre-wrap; /* Preserve whitespace and line breaks */
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h2>Upload Document/Image</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" accept="image/*, .pdf" required>
+            <button type="submit" id="uploadButton">
+                Upload
+                <div id="loadingSpinner"></div> <!-- Loading spinner -->
+            </button>
+        </form>
+        <div id="responseMessage"></div>
+        <div id="extractedText"></div> <!-- Div for displaying extracted text -->
+    </div>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadButton = document.getElementById('uploadButton');
+            const fileInput = document.getElementById('fileInput');
+            const responseMessage = document.getElementById('responseMessage');
+            const extractedTextDiv = document.getElementById('extractedText'); // New div for extracted text
+            const loadingSpinner = document.getElementById('loadingSpinner'); // Loading spinner
+
+            document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+                const file = fileInput.files[0];
+                if (file) {
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    // Show loading spinner
+                    uploadButton.disabled = true; // Disable the button
+                    loadingSpinner.style.display = 'block'; // Show the spinner
+
+                    fetch('/upload', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        responseMessage.innerHTML = data.message || data.error; // Show response message
+                        if (data.extracted_text) {
+                            extractedTextDiv.innerHTML = data.extracted_text; // Show extracted text
+                        } else {
+                            extractedTextDiv.innerHTML = ''; // Clear previous text if none is found
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        responseMessage.innerHTML = 'Error uploading file.';
+                        extractedTextDiv.innerHTML = ''; // Clear extracted text on error
+                    })
+                    .finally(() => {
+                        // Hide loading spinner and re-enable button
+                        loadingSpinner.style.display = 'none'; // Hide the spinner
+                        uploadButton.disabled = false; // Re-enable the button
+                    });
+                } else {
+                    console.error('No file selected.');
+                    responseMessage.innerHTML = 'No file selected.';
+                    extractedTextDiv.innerHTML = ''; // Clear extracted text on error
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
