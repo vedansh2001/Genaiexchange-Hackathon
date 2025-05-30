@@ -3,7 +3,7 @@ from flask_cors import CORS
 import google.generativeai as genai
 import os
 
-API_KEY = 'AIzaSyAkdZbCHRp73wyt43krCC1AIGkALHP0hbc'
+API_KEY = "Import from env"
 genai.configure(api_key=API_KEY)
 
 app = Flask(__name__)
